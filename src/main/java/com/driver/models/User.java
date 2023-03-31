@@ -1,27 +1,26 @@
 package com.driver.models;
 
-import com.driver.models.Blog;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    int id;
+
     private String username;
     private String password;
-    private String firstName = "test";
-    private String lastName = "test";
-
+    private String firstName;
+    private String lastName;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Blog> blogList = new ArrayList<>();
 
     public User() {
     }
+
     public User(int id, String username, String password, String firstName, String lastName, List<Blog> blogList) {
         this.id = id;
         this.username = username;

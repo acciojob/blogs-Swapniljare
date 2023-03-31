@@ -1,29 +1,21 @@
 package com.driver.models;
 
-import com.driver.models.Blog;
-
 import javax.persistence.*;
 
 @Entity
-public class Image {
+@Table(name = "images")
+public class Image{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    int id;
+
     private String description;
     private String dimensions;
-
     @ManyToOne
     @JoinColumn
     Blog blog;
 
-
     public Image() {
-    }
-
-    public Image(String description, String dimensions, Blog blog) {
-        this.description = description;
-        this.dimensions = dimensions;
-        this.blog = blog;
     }
 
     public Image(int id, String description, String dimensions, Blog blog) {
