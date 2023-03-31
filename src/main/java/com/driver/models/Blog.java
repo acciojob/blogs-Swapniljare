@@ -28,7 +28,7 @@ public class Blog {
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     List<Image> imageList = new ArrayList<>();
 
-    public Blog(String title, String content, com.driver.models.User user) {
+    public Blog() {
     }
 
     public Blog(String title, String content, User user) {
@@ -44,6 +44,9 @@ public class Blog {
         this.pubDate = pubDate;
         this.user = user;
         this.imageList = imageList;
+    }
+
+    public Blog(String title, String content, com.driver.models.User user) {
     }
 
     public int getId() {
