@@ -1,25 +1,22 @@
 package com.driver.models;
 
-import org.apache.catalina.User;
-import org.springframework.data.annotation.CreatedDate;
-
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Blog {
-
+@Table(name = "blogs")
+public class Blog{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    int id;
+
     private String title;
+
     private String content;
 
-    @CreatedDate
     private Date pubDate;
-
 
     @ManyToOne
     @JoinColumn
@@ -31,12 +28,6 @@ public class Blog {
     public Blog() {
     }
 
-    public Blog(String title, String content, User user) {
-        this.title = title;
-        this.content = content;
-        this.user = user;
-    }
-
     public Blog(int id, String title, String content, Date pubDate, User user, List<Image> imageList) {
         this.id = id;
         this.title = title;
@@ -44,9 +35,6 @@ public class Blog {
         this.pubDate = pubDate;
         this.user = user;
         this.imageList = imageList;
-    }
-
-    public Blog(String title, String content, com.driver.models.User user) {
     }
 
     public int getId() {
@@ -73,14 +61,6 @@ public class Blog {
         this.content = content;
     }
 
-    public Date getPubDate() {
-        return pubDate;
-    }
-
-    public void setPubDate(Date pubDate) {
-        this.pubDate = pubDate;
-    }
-
     public User getUser() {
         return user;
     }
@@ -95,5 +75,13 @@ public class Blog {
 
     public void setImageList(List<Image> imageList) {
         this.imageList = imageList;
+    }
+
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
     }
 }
